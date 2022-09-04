@@ -1,0 +1,52 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/config": "^3.3.0",
+    "@types/express": "^4.17.13",
+    "@types/html-to-text": "^8.1.1",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^16.11.10",
+    "@types/nodemailer": "^6.4.5",
+    "@types/pug": "^2.0.6",
+    "@types/sharp": "^0.30.5",
+    "morgan": "^1.10.0",
+    "ts-node": "10.7.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "4.5.2"
+  },
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/morgan": "^1.9.3",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "envalid": "^7.3.1",
+    "express": "^4.17.2",
+    "html-to-text": "^8.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.7.8",
+    "pg": "^8.4.0",
+    "pug": "^3.0.2",
+    "redis": "^4.2.0",
+    "reflect-metadata": "^0.1.13",
+    "sharp": "^0.30.7",
+    "typeorm": "0.3.7",
+    "zod": "^3.18.0"
+  },
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpile-only --exit-child src/app.ts",
+    "build": "tsc -p .",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migrate": "rmdir /s build && yarn build && yarn typeorm migration:generate ./src/migrations/added-entity -d ./src/utils/data-source.ts",
+    "db:push": "rmdir /s build && yarn build && yarn typeorm migration:run -d src/utils/data-source.ts"
+  }
+}
